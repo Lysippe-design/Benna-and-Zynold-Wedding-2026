@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benna &amp; Zynold — Wedding Invitation</title>
+<meta name="description" content="Join us as we celebrate the wedding of Benna &amp; Zynold — December 26, 2026, San Jose City, Nueva Ecija.">
+
+<!-- Social share preview (Open Graph / Twitter Card).
+     IMPORTANT: og:url and og:image need FULL absolute URLs to work once
+     this is live — replace YOUR-USERNAME/YOUR-REPO below with your actual
+     GitHub Pages address, e.g. https://janedoe.github.io/our-wedding/ -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Benna &amp; Zynold — Wedding Invitation">
+<meta property="og:description" content="Join us as we celebrate the wedding of Benna &amp; Zynold — December 26, 2026, San Jose City, Nueva Ecija.">
+<meta property="og:url" content="https://YOUR-USERNAME.github.io/YOUR-REPO/">
+<meta property="og:image" content="https://YOUR-USERNAME.github.io/YOUR-REPO/assets/photos/thumbnail.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Benna &amp; Zynold — Wedding Invitation">
+<meta name="twitter:description" content="Join us as we celebrate the wedding of Benna &amp; Zynold — December 26, 2026, San Jose City, Nueva Ecija.">
+<meta name="twitter:image" content="https://YOUR-USERNAME.github.io/YOUR-REPO/assets/photos/thumbnail.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,500&display=swap" rel="stylesheet">
+<style>
+  /* ==========================================================================
+     DESIGN TOKENS
+     ========================================================================== */
+  :root {
+    /* Colors */
+    --color-primary-bg: #fff8f3;
+    --color-secondary-bg: #faf6f2;
+    --color-dark: #3d2b24;
+    --color-text-1: #4a3f3b;
+    --color-secondary-text: #3d2b24;
+    --color-highlight: #d4607c;
+    --color-accent-1: #d8b8a8;
+    --color-secondary-accent: #b8906a;
+    --color-secondary-detail: #ead6ce;
+    --color-palette-bg: #fbe8e5;
+    --color-dusty-pink: #c7a49e;
+    --color-nude-pink: #e4c9b8;
+    --color-beige: #d6c5b4;
+    --color-soft-gold: #c9a96e;
+    --color-map-border: #d8b8a8;
+    --color-card-border: #b8906a;
+    --color-footer-muted: #e8b7b0;
+    --color-footer-name: #c98f8a;
+    --color-warning-heading: #d4607c;
+    --color-warning-body: #ead6ce;
+    --color-warning-body-2: #faf6f2;
+
+    /* Typography */
+    --font-serif: 'Playfair Display', 'Playfair', serif;
+    --font-sans: 'DM Sans', sans-serif;
+
+    --fs-logo: 16px;
+    --fs-nav: 14px;
+    --fs-eyebrow: 12px;
+    --fs-body: 14px;
+    --fs-small: 12px;
+    --fs-tiny: 10px;
+    --fs-btn: 12px;
+    --fs-h2: 48px;
+    --fs-h3: 24px;
+    --fs-hero-invite: 12px;
+    --fs-hero-name: 88px;
+    --fs-warning-title: 20px;
+    --fs-footer-logo: 40px;
+    --fs-footer-bottom: 20px;
+
+    /* Spacing */
+    --space-2xs: 5px;
+    --space-xs: 10px;
+    --space-sm: 20px;
+    --space-md: 30px;
+    --space-lg: 40px;
+    --space-xl: 80px;
+    --space-2xl: 100px;
+    --space-section-x: 120px;
+
+    /* Radius */
+    --radius-sm: 1px;
+    --radius-md: 10px;
+  }
+
+  /* ==========================================================================
+     RESET & BASE
+     ========================================================================== */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background: var(--color-primary-bg);
+    color: var(--color-text-1);
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+  }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  ul, p { margin: 0; padding: 0; }
+  button { font-family: inherit; cursor: pointer; }
+
+  /* ==========================================================================
+     CURSOR TRAIL
+     A chain of segments, each easing toward the one ahead of it, fading in
+     size and opacity toward the tail. All positioning is transform-only
+     (GPU-composited, no layout/reflow cost); no filter:blur anywhere — the
+     soft edge comes purely from the radial-gradient's own alpha falloff.
+     Disabled entirely on touch devices (no persistent cursor to trail).
+     ========================================================================== */
+  /* ==========================================================================
+     CURSOR TRAIL (canvas)
+     A single full-viewport canvas, drawn to on every requestAnimationFrame
+     tick — far cheaper than animating many DOM nodes. mix-blend-mode:multiply
+     is what actually protects text legibility here: multiply can never
+     lighten a pixel past its own darkness, so dark headings/body copy stay
+     fully readable underneath the glow regardless of paint order. Combined
+     with pointer-events:none, text stays 100% selectable/clickable no matter
+     what. (If this design ever moves to a dark theme, swap multiply for
+     screen — screen is multiply's equivalent for light-on-dark blending.)
+     ========================================================================== */
+  #cursorTrailCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    mix-blend-mode: multiply;
+  }
+  @media (hover: none), (pointer: coarse) {
+    #cursorTrailCanvas { display: none; }
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  /* ==========================================================================
+     BUTTON
+     ========================================================================== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 150px;
+    padding: 10px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--fs-btn);
+    letter-spacing: 1.08px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-primary-bg);
+    background: var(--color-primary-bg);
+    color: var(--color-text-1);
+    text-align: center;
+    transition: opacity 0.2s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  }
+  .btn:hover {
+    opacity: 0.85;
+    box-shadow: 0 10px 22px rgba(61, 43, 36, 0.22);
+    transform: translateY(-2px);
+  }
+  .btn--wide {
+    width: 205px;
+    border-radius: var(--radius-sm);
+    background: var(--color-highlight);
+    border-color: var(--color-highlight);
+    color: var(--color-primary-bg);
+  }
+  .btn--wide.btn--secondary-bg { color: var(--color-secondary-bg); }
+
+  /* ==========================================================================
+     EYEBROW / HEADING / DIVIDER (shared)
+     ========================================================================== */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--fs-eyebrow);
+    letter-spacing: 1.08px;
+    color: var(--color-highlight);
+    text-align: center;
+  }
+  .section-heading {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: var(--fs-h2);
+    letter-spacing: 0.96px;
+    color: var(--color-text-1);
+    text-align: center;
+    margin: 0;
+  }
+  .section-lead {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--fs-body);
+    letter-spacing: 0.7px;
+    line-height: 28px;
+    color: var(--color-secondary-text);
+    text-align: center;
+    max-width: 523px;
+  }
+  .divider {
+    width: 333px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    color: var(--color-accent-1);
+  }
+  .divider__line {
+    flex: 1 1 auto;
+    max-width: 150px;
+    height: 1px;
+    background: currentColor;
+  }
+  .divider__diamond {
+    width: 9px;
+    height: 9px;
+    flex-shrink: 0;
+    border: 1.5px solid currentColor;
+    transform: rotate(45deg);
+  }
+  .divider--light { color: var(--color-primary-bg); }
+
+  /* ==========================================================================
+     HEADER / NAV
+     ========================================================================== */
+  .site-header {
+    background: rgba(61, 43, 36, 0.32);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px var(--space-section-x);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 100;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+  }
+  .site-header--scrolled {
+    background: var(--color-dark);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+  }
+  .site-header__logo {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 700;
+    font-size: var(--fs-logo);
+    letter-spacing: -0.16px;
+    color: var(--color-primary-bg);
+    line-height: 32px;
+    white-space: nowrap;
+  }
+  /* Offsets anchor-jump targets so the sticky header doesn't cover them */
+  #home, #ceremony, #reception, #dress-code, #gifts {
+    scroll-margin-top: 84px;
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  }
+  .nav__list {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+    list-style: none;
+  }
+  .nav__link {
+    background: none;
+    border: none;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: var(--fs-nav);
+    color: var(--color-primary-bg);
+    white-space: nowrap;
+    padding: 0;
+  }
+  .nav__toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    padding: 0;
+  }
+  .nav__toggle-bar {
+    width: 24px;
+    height: 2px;
+    background: var(--color-primary-bg);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ==========================================================================
+     HERO
+     ========================================================================== */
+  .hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: var(--color-primary-bg);
+  }
+  .hero__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+  .hero__bg.photo-placeholder {
+    background: linear-gradient(135deg, var(--color-dark) 0%, var(--color-secondary-accent) 100%);
+    color: var(--color-primary-bg);
+  }
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 60px var(--space-section-x);
+    text-align: center;
+  }
+  .hero__diamond { width: 181px; }
+  .hero__invite {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: var(--fs-hero-invite);
+    letter-spacing: 2.4px;
+    color: var(--color-primary-bg);
+    white-space: nowrap;
+  }
+  .hero__name {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: var(--fs-hero-name);
+    letter-spacing: -3.52px;
+    color: var(--color-primary-bg);
+    line-height: 1;
+    margin: 0;
+  }
+  .hero__amp {
+    display: block;
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 1;
+    color: var(--color-primary-bg);
+  }
+  .hero__date {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: var(--fs-hero-invite);
+    letter-spacing: 2.4px;
+    color: var(--color-primary-bg);
+    text-align: center;
+  }
+
+  /* ==========================================================================
+     WELCOME
+     ========================================================================== */
+  .welcome {
+    background: var(--color-secondary-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-xl) var(--space-section-x);
+  }
+
+  /* ==========================================================================
+     CEREMONY / RECEPTION
+     ========================================================================== */
+  .venue-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-xl) var(--space-section-x);
+  }
+  .venue-section--ceremony { background: var(--color-secondary-detail); }
+  .venue-section--reception { background: var(--color-primary-bg); }
+  .venue-section .section-lead { max-width: 1103px; }
+
+  .venue-details {
+    display: flex;
+    gap: 35px;
+    align-items: stretch;
+    width: 100%;
+    max-width: 1102px;
+    justify-content: center;
+  }
+  .venue-section--ceremony .venue-details { flex-direction: row-reverse; }
+  .venue-section--reception .venue-details { flex-direction: row-reverse; }
+
+  .venue-map {
+    flex: 0 0 483px;
+    width: 483px;
+    height: 483px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-map-border);
+    overflow: hidden;
+  }
+  .venue-map .photo-placeholder,
+  .venue-map .map-embed { width: 100%; height: 100%; }
+  .map-embed {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+  }
+
+  .venue-card-wrap {
+    flex: 1 1 584px;
+    max-width: 584px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    height: 100%;
+  }
+  .venue-card-wrap__photo {
+    width: 100%;
+    flex: 1 1 0%;
+    min-height: 180px;
+    object-fit: cover;
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-md);
+  }
+
+  /* ==========================================================================
+     PHOTO PLACEHOLDER
+     Stand-in for real photography / map embeds. Swap for an <img> (or a live
+     map embed) once real assets are available — see markup comments.
+     ========================================================================== */
+  .photo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    min-height: 160px;
+    background: linear-gradient(135deg, var(--color-secondary-detail) 0%, var(--color-accent-1) 100%);
+    color: var(--color-text-1);
+    text-align: center;
+    padding: 16px;
+  }
+  .photo-placeholder__icon {
+    width: 32px;
+    height: 32px;
+    opacity: 0.6;
+  }
+  .photo-placeholder__label {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    letter-spacing: 0.3px;
+    opacity: 0.75;
+    max-width: 320px;
+    line-height: 1.4;
+  }
+  .location-card {
+    background: var(--color-primary-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: var(--radius-md);
+    padding: 26px 39px 16px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  .location-card__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+  }
+  .location-card__icon { width: 12px; height: 12px; flex-shrink: 0; margin-top: 4px; }
+  .location-card__text {
+    font-family: var(--font-sans);
+    font-size: var(--fs-small);
+    color: var(--color-text-1);
+    line-height: 20px;
+  }
+  .location-card__text strong {
+    display: block;
+    font-weight: 600;
+  }
+  .location-card__divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid var(--color-secondary-detail);
+    margin: 0;
+  }
+  .location-card__link {
+    color: var(--color-secondary-accent);
+  }
+
+  /* ==========================================================================
+     PALETTE
+     ========================================================================== */
+  .palette-section {
+    background: var(--color-palette-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-xl) var(--space-section-x);
+  }
+  .palette-section .section-lead { max-width: 523px; }
+  .palette-swatches {
+    display: flex;
+    gap: var(--space-md);
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: var(--space-md) 0;
+  }
+  .palette-swatch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 140px;
+    text-align: center;
+  }
+  .palette-swatch__circle {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    box-shadow: 0 10px 25px rgba(74, 63, 59, 0.18);
+    margin-bottom: var(--space-sm);
+  }
+  .palette-swatch__name {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--fs-body);
+    letter-spacing: 0.7px;
+    color: var(--color-text-1);
+    line-height: 28px;
+  }
+  .palette-swatch__hex {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: var(--fs-body);
+    letter-spacing: 0.7px;
+    color: var(--color-text-1);
+    line-height: 28px;
+  }
+  .palette-note {
+    font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    letter-spacing: 0.7px;
+    line-height: 28px;
+    color: var(--color-secondary-text);
+    text-align: center;
+    max-width: 523px;
+  }
+  .palette-note strong { font-weight: 700; }
+  .palette-note .c-earth { color: #9e8c82; }
+  .palette-note .c-rose { color: var(--color-highlight); }
+  .palette-note .c-gold { color: var(--color-soft-gold); }
+
+  /* ==========================================================================
+     ATTIRE
+     ========================================================================== */
+  .attire-section {
+    background: var(--color-secondary-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    padding: var(--space-xl) var(--space-section-x);
+  }
+  .attire-group-title {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--fs-eyebrow);
+    letter-spacing: 1.08px;
+    color: var(--color-highlight);
+    text-align: center;
+    width: 100%;
+  }
+  .attire-cards {
+    display: flex;
+    gap: var(--space-lg);
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 996px;
+  }
+  .attire-card {
+    background: var(--color-primary-bg);
+    border: 2px solid var(--color-accent-1);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xs);
+    width: 250px;
+  }
+  .attire-card--wide { width: 400px; }
+  .attire-card__icon { width: 55px; height: 55px; }
+  .attire-card__divider {
+    width: 100%;
+    border: none;
+    border-top: 2px solid var(--color-accent-1);
+    margin: 0;
+  }
+  .attire-card__title {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: var(--fs-h3);
+    color: var(--color-text-1);
+    text-align: center;
+  }
+  .attire-card__block {
+    width: 100%;
+    text-align: left;
+  }
+  .attire-card__label {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--fs-small);
+    letter-spacing: 1.44px;
+    color: var(--color-secondary-accent);
+    display: block;
+    margin-bottom: 4px;
+  }
+  .attire-card__desc {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: var(--fs-small);
+    line-height: 16px;
+    color: var(--color-secondary-accent);
+  }
+  .attire-card__header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    width: 100%;
+  }
+  .attire-card__accent-bar {
+    width: 7px;
+    height: 32px;
+    border-radius: var(--radius-md);
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+  .attire-card__accent-bar--rose { background: var(--color-highlight); }
+  .attire-card__accent-bar--gold { background: var(--color-secondary-accent); }
+  .attire-card__list {
+    list-style: none;
+    width: 100%;
+    opacity: 0.77;
+    font-family: var(--font-sans);
+    font-size: var(--fs-small);
+    line-height: 28px;
+    color: var(--color-secondary-text);
+  }
+  .attire-card__list li::marker { color: var(--color-highlight); }
+  .attire-card__list li { color: var(--color-text-1); }
+  .attire-card__note {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-style: italic;
+    font-size: var(--fs-small);
+    letter-spacing: -0.24px;
+    line-height: 20px;
+    color: var(--color-text-1);
+    opacity: 0.77;
+    text-align: center;
+  }
+
+  /* ==========================================================================
+     WARNING
+     ========================================================================== */
+  .warning-section {
+    background: var(--color-dark);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--space-lg);
+    padding: var(--space-xl) var(--space-section-x);
+  }
+  .warning-section__icon { width: 55px; height: 55px; flex-shrink: 0; }
+  .warning-section__text { opacity: 0.9; max-width: 767px; }
+  .warning-section__title {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: var(--fs-warning-title);
+    line-height: 28px;
+    color: var(--color-warning-heading);
+    margin-bottom: var(--space-xs);
+  }
+  .warning-section__body {
+    font-family: var(--font-sans);
+    font-size: var(--fs-warning-title);
+    line-height: 28px;
+  }
+  .warning-section__body span:first-child {
+    font-weight: 500;
+    color: var(--color-warning-body);
+  }
+  .warning-section__body span:last-child {
+    color: var(--color-warning-body-2);
+  }
+
+  /* ==========================================================================
+     GIFT
+     ========================================================================== */
+  .gift-section {
+    background: var(--color-primary-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl) var(--space-section-x);
+  }
+  .gift-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    width: 100%;
+    max-width: 1300px;
+    flex-wrap: wrap;
+  }
+  .gift-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+    max-width: 572px;
+    flex: 1 1 480px;
+  }
+  .gift-content__icon { width: 55px; height: 55px; }
+  .gift-content__eyebrow {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--fs-eyebrow);
+    letter-spacing: 1.08px;
+    color: var(--color-highlight);
+    margin-top: -10px;
+  }
+  .gift-content__title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: var(--fs-h2);
+    letter-spacing: 0.96px;
+    color: var(--color-text-1);
+    line-height: 40px;
+    margin-top: -18px;
+  }
+  .gift-content__rule {
+    width: 120px;
+    border: none;
+    border-top: 1px solid var(--color-accent-1);
+    margin: 0;
+  }
+  .gift-content__rule--wide { width: 400px; }
+  .gift-content__body {
+    font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    letter-spacing: 0.7px;
+    line-height: 28px;
+    color: var(--color-secondary-text);
+  }
+  .gift-content__body p { margin-bottom: 8px; }
+  .gift-content__rsvp-label {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--fs-small);
+    letter-spacing: 0.6px;
+    color: var(--color-text-1);
+  }
+  .gift-map {
+    width: 483px;
+    height: 483px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-map-border);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .gift-map .photo-placeholder,
+  .gift-map .map-embed { width: 100%; height: 100%; }
+  .gift-map__photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* ==========================================================================
+     FOOTER
+     ========================================================================== */
+  .site-footer {
+    background: var(--color-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-xl) var(--space-section-x);
+  }
+  .footer-columns {
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    text-align: center;
+  }
+  .footer-brand__logo {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: var(--fs-footer-logo);
+    letter-spacing: -2px;
+    color: var(--color-footer-name);
+    line-height: 40px;
+    margin: 0;
+  }
+  .footer-brand__date {
+    font-family: var(--font-sans);
+    font-style: italic;
+    font-weight: 500;
+    font-size: var(--fs-small);
+    letter-spacing: 1.2px;
+    color: var(--color-secondary-detail);
+  }
+  .footer-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    justify-content: center;
+  }
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+    width: 209px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: var(--fs-tiny);
+    line-height: 12px;
+  }
+  .footer-col--center { align-items: center; text-align: center; }
+  .footer-col__label {
+    letter-spacing: 1px;
+  }
+  .footer-col__label--ceremony { color: var(--color-secondary-accent); }
+  .footer-col__label--reception { color: var(--color-highlight); }
+  .footer-col__label--contact { color: var(--color-footer-muted); }
+  .footer-col p { color: var(--color-secondary-detail); }
+  .footer-divider {
+    width: 100%;
+    border: none;
+    border-top: 1px solid rgba(234, 214, 206, 0.25);
+    margin: 0;
+  }
+  .footer-bottom {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: var(--fs-footer-bottom);
+    letter-spacing: 2px;
+    color: var(--color-primary-bg);
+    text-align: center;
+  }
+
+  /* ==========================================================================
+     TABLET — max-width: 1024px
+     ========================================================================== */
+  @media (max-width: 1024px) {
+    :root {
+      --space-section-x: 60px;
+      --fs-hero-name: 64px;
+      --fs-h2: 36px;
+    }
+
+    .site-header { padding: 16px 24px; }
+    #home, #ceremony, #reception, #dress-code, #gifts { scroll-margin-top: 65px; }
+
+    .nav__toggle { display: flex; }
+    .nav__list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      background: var(--color-dark);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      width: 100%;
+    }
+    .nav__list.is-open { max-height: 420px; }
+    .nav__list li { width: 100%; }
+    .nav__link {
+      display: block;
+      width: 100%;
+      padding: 14px 24px;
+    }
+    .nav__cta { padding: 14px 24px 20px; }
+    .nav__cta .btn { width: 100%; }
+
+    .hero { min-height: 100vh; min-height: 100dvh; }
+    .hero__content { padding: 40px 24px; gap: 22px; }
+
+    .venue-details { flex-direction: column; align-items: center; }
+    .venue-section--ceremony .venue-details { flex-direction: column; }
+    .venue-section--reception .venue-details { flex-direction: column; }
+    .venue-map { width: 100%; max-width: 483px; height: auto; aspect-ratio: 1/1; flex: 0 0 auto; }
+    .venue-card-wrap { flex: 0 0 auto; max-width: 483px; width: 100%; }
+    .venue-card-wrap__photo { height: auto; aspect-ratio: 1/1; }
+    .location-card { padding: 22px 20px 16px; }
+
+    .attire-cards { flex-direction: column; align-items: center; }
+    .attire-card, .attire-card--wide { width: 100%; max-width: 401px; }
+
+    .gift-wrap { justify-content: center; }
+    .gift-content { max-width: 100%; }
+    .gift-map { width: 100%; max-width: 483px; height: auto; aspect-ratio: 1/1; }
+
+    .footer-columns { gap: 50px; }
+  }
+
+  /* ==========================================================================
+     MOBILE — max-width: 768px
+     ========================================================================== */
+  @media (max-width: 768px) {
+    :root {
+      --space-section-x: 24px;
+      --fs-hero-name: 44px;
+      --fs-h2: 30px;
+      --space-xl: 56px;
+      --space-2xl: 64px;
+    }
+
+    .site-header__logo { font-size: 14px; }
+
+    .hero { min-height: 100vh; min-height: 100dvh; }
+    .hero__content { gap: 16px; padding: 32px 20px; }
+    .hero__diamond { width: 130px; }
+    .hero__invite, .hero__date { font-size: 10px; letter-spacing: 1.6px; }
+
+    .section-lead { max-width: 100%; }
+    .venue-section .section-lead { max-width: 100%; }
+
+    .palette-swatches { gap: 20px; }
+    .palette-swatch { width: 120px; }
+    .palette-swatch__circle { width: 100px; height: 100px; }
+
+    .attire-cards { gap: 24px; }
+
+    .warning-section { flex-direction: column; align-items: center; text-align: center; gap: 20px; }
+    .warning-section__text { text-align: center; }
+
+    .gift-wrap { flex-direction: column; }
+    .gift-content { flex: 0 0 auto; align-items: center; text-align: center; }
+    .gift-content__body { text-align: left; }
+    .gift-content__rsvp-label { align-self: center; }
+
+    .footer-columns { flex-direction: column; align-items: center; gap: 32px; }
+    .footer-col { align-items: center; text-align: center; }
+  }
+</style>
+</head>
+<body>
+<canvas id="cursorTrailCanvas" aria-hidden="true"></canvas>
+
+  <!-- ==========================================================================
+       HEADER
+       ========================================================================== -->
+  <header class="site-header">
+    <p class="site-header__logo">Benna &amp; Zynold</p>
+    <nav class="nav" aria-label="Primary navigation">
+      <ul class="nav__list" id="navList">
+        <li><a class="nav__link" href="#home">HOME</a></li>
+        <li><a class="nav__link" href="#ceremony">CEREMONY</a></li>
+        <li><a class="nav__link" href="#reception">RECEPTION</a></li>
+        <li><a class="nav__link" href="#dress-code">DRESS CODE</a></li>
+        <li><a class="nav__link" href="#gifts">GIFTS</a></li>
+        <li class="nav__cta">
+          <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfGIxiJ_s2vLRbx0BT3lXO6SVjTKDHWk9LJu4ngociZpSLSjw/viewform" target="_blank" rel="noopener">RSVP NOW</a>
+        </li>
+      </ul>
+      <button class="nav__toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navList" aria-label="Toggle navigation menu">
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+        <span class="nav__toggle-bar"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ====================================================================
+         HERO
+         ==================================================================== -->
+    <section class="hero" id="home" aria-label="Wedding invitation hero">
+      <img class="hero__bg" src="assets/photos/hero-bg.jpg" alt="Bride and groom silhouette against a scenic sunset background">
+      <div class="hero__content">
+        <div class="divider divider--light hero__diamond" aria-hidden="true"><span class="divider__line"></span><span class="divider__diamond"></span><span class="divider__line"></span></div>
+        <p class="hero__invite">WE CORDIALLY INVITE YOU TO CELEBRATE OUR WEDDING</p>
+        <p class="hero__name">Benna</p>
+        <span class="hero__amp" aria-hidden="true">&amp;</span>
+        <p class="hero__name">Zynold</p>
+        <p class="hero__date">DECEMBER 26, 2026 • 3:00 PM • SAN JOSE CITY, NUEVA ECIJA</p>
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfGIxiJ_s2vLRbx0BT3lXO6SVjTKDHWk9LJu4ngociZpSLSjw/viewform" target="_blank" rel="noopener">RSVP NOW</a>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         WELCOME
+         ==================================================================== -->
+    <section class="welcome" aria-label="Welcome message">
+      <p class="eyebrow">A MESSAGE FROM US</p>
+      <h2 class="section-heading">Welcome</h2>
+      <div class="divider" aria-hidden="true"><span class="divider__line"></span><span class="divider__diamond"></span><span class="divider__line"></span></div>
+      <p class="section-lead">We're so excited to celebrate this special day with our family and friends. Your presence will make our wedding celebration even more meaningful.</p>
+      <a class="btn btn--wide" href="https://docs.google.com/forms/d/e/1FAIpQLSfGIxiJ_s2vLRbx0BT3lXO6SVjTKDHWk9LJu4ngociZpSLSjw/viewform" target="_blank" rel="noopener">CONFIRM ATTENDANCE</a>
+    </section>
+
+    <!-- ====================================================================
+         CEREMONY
+         ==================================================================== -->
+
+    <!-- ====================================================================
+         RECEPTION
+         ==================================================================== -->
+    <section class="venue-section venue-section--ceremony" id="ceremony" aria-label="Ceremony details">
+      <p class="eyebrow">JOIN US FOR</p>
+      <h2 class="section-heading">The Ceremony</h2>
+      <div class="divider" aria-hidden="true"><span class="divider__line"></span><span class="divider__diamond"></span><span class="divider__line"></span></div>
+      <p class="section-lead">We will begin our wedding celebration with a sacred ceremony as we exchange our vows and become one in marriage. We would be honored to have you witness this meaningful moment.</p>
+      <div class="venue-details">
+        <div class="venue-map">
+          <iframe class="map-embed" src="https://www.google.com/maps?q=St.+Joseph+the+Worker+Parish+Church%2C+Maharlika+Highway%2C+San+Jose+City%2C+Nueva+Ecija%2C+Philippines&output=embed" title="Map: St. Joseph the Worker Parish Church, San Jose City" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+        <div class="venue-card-wrap">
+          <img class="venue-card-wrap__photo" src="assets/photos/ceremony-venue.jpg" alt="St. Joseph the Worker Parish Church exterior">
+          <div class="location-card">
+            <div class="location-card__row">
+              <svg class="location-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C7.6 2 4 5.6 4 10c0 5.4 7.1 11.1 7.4 11.4a1 1 0 0 0 1.2 0C13 21.1 20 15.4 20 10c0-4.4-3.6-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" fill="#4a3f3b"/></svg>
+              <p class="location-card__text"><strong>St. Joseph the Worker Parish Church</strong>Maharlika Highway, San Jose City, Nueva Ecija, Philippines</p>
+            </div>
+            <hr class="location-card__divider">
+            <div class="location-card__row">
+              <svg class="location-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2" stroke="#4a3f3b" stroke-width="2"/><path d="M3 9h18M8 2v4M16 2v4" stroke="#4a3f3b" stroke-width="2" stroke-linecap="round"/></svg>
+              <p class="location-card__text">December 26, 2026</p>
+            </div>
+            <div class="location-card__row">
+              <svg class="location-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#4a3f3b" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#4a3f3b" stroke-width="2" stroke-linecap="round"/></svg>
+              <p class="location-card__text">3:00 PM</p>
+            </div>
+            <div class="location-card__row">
+              <svg class="location-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 3h7v7M21 3l-9 9M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6" stroke="#b8906a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a class="location-card__text location-card__link" href="https://www.google.com/maps/search/?api=1&query=St.+Joseph+the+Worker+Parish+Church%2C+Maharlika+Highway%2C+San+Jose+City%2C+Nueva+Ecija%2C+Philippines" target="_blank" rel="noopener">Open in Google Maps</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="venue-section venue-section--reception" id="reception" aria-label="Reception details">
+      <p class="eyebrow">CELEBRATE WITH US AT</p>
+      <h2 class="section-heading">The Reception</h2>
+      <div class="divider" aria-hidden="true"><span class="divider__line"></span><span class="divider__diamond"></span><span class="divider__line"></span></div>
+      <p class="section-lead">Following the ceremony, please join us for an evening of celebration, dining, and joyful moments as we celebrate the beginning of our new chapter together.</p>
+      <div class="venue-details">
+        <div class="venue-card-wrap">
+          <img class="venue-card-wrap__photo" src="assets/photos/reception-venue.jpg" alt="Le Felize Victoria reception venue">
+          <div class="location-card">
+            <div class="location-card__row">
+              <svg class="location-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C7.6 2 4 5.6 4 10c0 5.4 7.1 11.1 7.4 11.4a1 1 0 0 0 1.2 0C13 21.1 20 15.4 20 10c0-4.4-3.6-8-8-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" fill="#4a3f3b"/></svg>
+              <p class="location-card__text"><strong>Le Felize Victoria</strong>Zone 9, 39 Ben Saturno St, Sibut, San Jose City, 3121 Nueva Ecija, Philippines</p>
+            </div>
+            <hr class="location-card__divider">
+            <div class="location-card__row">
+              <svg class="location-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="2" stroke="#4a3f3b" stroke-width="2"/><path d="M3 9h18M8 2v4M16 2v4" stroke="#4a3f3b" stroke-width="2" stroke-linecap="round"/></svg>
+              <p class="location-card__text">December 26, 2026</p>
+            </div>
+            <div class="location-card__row">
+              <svg class="location-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="#4a3f3b" stroke-width="2"/><path d="M12 7v5l3 3" stroke="#4a3f3b" stroke-width="2" stroke-linecap="round"/></svg>
+              <p class="location-card__text">4:00 PM</p>
+            </div>
+            <div class="location-card__row">
+              <svg class="location-card__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14 3h7v7M21 3l-9 9M19 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6" stroke="#b8906a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <a class="location-card__text location-card__link" href="https://www.google.com/maps/search/?api=1&query=Le+Felize+Victoria%2C+Zone+9%2C+39+Ben+Saturno+St%2C+Sibut%2C+San+Jose+City%2C+3121+Nueva+Ecija%2C+Philippines" target="_blank" rel="noopener">Open in Google Maps</a>
+            </div>
+          </div>
+        </div>
+        <div class="venue-map">
+          <iframe class="map-embed" src="https://www.google.com/maps?q=Le+Felize+Victoria%2C+Zone+9%2C+39+Ben+Saturno+St%2C+Sibut%2C+San+Jose+City%2C+3121+Nueva+Ecija%2C+Philippines&output=embed" title="Map: Le Felize Victoria, San Jose City" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         PALETTE
+         ==================================================================== -->
+    <section class="palette-section" id="dress-code" aria-label="Wedding palette">
+      <p class="eyebrow">DRESS CODE</p>
+      <h2 class="section-heading">Wedding Palette</h2>
+      <div class="divider" aria-hidden="true"><span class="divider__line"></span><span class="divider__diamond"></span><span class="divider__line"></span></div>
+      <p class="section-lead">Help us create a beautifully cohesive celebration.</p>
+      <div class="palette-swatches">
+        <div class="palette-swatch">
+          <div class="palette-swatch__circle" style="background:#c7a49e;"></div>
+          <span class="palette-swatch__name">Dusty Pink</span>
+          <span class="palette-swatch__hex">#C7A49E</span>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-swatch__circle" style="background:#e4c9b8;"></div>
+          <span class="palette-swatch__name">Nude Pink</span>
+          <span class="palette-swatch__hex">#E4C9B8</span>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-swatch__circle" style="background:#d6c5b4;"></div>
+          <span class="palette-swatch__name">Beige</span>
+          <span class="palette-swatch__hex">#D6C5B4</span>
+        </div>
+        <div class="palette-swatch">
+          <div class="palette-swatch__circle" style="background:#c9a96e;"></div>
+          <span class="palette-swatch__name">Soft Gold</span>
+          <span class="palette-swatch__hex">#C9A96E</span>
+        </div>
+      </div>
+      <div class="divider" aria-hidden="true"><span class="divider__line"></span><span class="divider__diamond"></span><span class="divider__line"></span></div>
+      <p class="palette-note">
+        To match the cozy and romantic nature of our venue, we invite our guests to join us in bringing our wedding palette to life.<br><br>
+        We are celebrating with <strong class="c-earth">warm earth tones</strong>, <strong class="c-rose">dusty roses</strong>, and <strong class="c-gold">soft gold</strong> neutrals — inspired by delicate roses, autumn florals, and natural ceramics.
+      </p>
+    </section>
+
+    <!-- ====================================================================
+         ATTIRE
+         ==================================================================== -->
+    <section class="attire-section" aria-label="Attire guide">
+      <p class="attire-group-title">FOR SPONSORS &amp; ENTOURAGE</p>
+      <div class="attire-cards">
+        <div class="attire-card">
+          <img class="attire-card__icon" src="assets/icons/rings.svg" alt="Wedding rings icon" width="55" height="55">
+          <hr class="attire-card__divider">
+          <h3 class="attire-card__title">Principal Sponsors</h3>
+          <div class="attire-card__block">
+            <span class="attire-card__label">LADIES</span>
+            <p class="attire-card__desc">Elegant floor-length gowns in nude pink</p>
+          </div>
+          <div class="attire-card__block">
+            <span class="attire-card__label">GENTLEMEN</span>
+            <p class="attire-card__desc">Traditional Barong Tagalog with black slacks</p>
+          </div>
+        </div>
+        <div class="attire-card">
+          <img class="attire-card__icon" src="assets/icons/bridesmaid-dress.svg" alt="Bridesmaid dress icon" width="55" height="55">
+          <hr class="attire-card__divider">
+          <h3 class="attire-card__title">Bridesmaid</h3>
+          <div class="attire-card__block">
+            <span class="attire-card__label">ATTIRE</span>
+            <p class="attire-card__desc">Romantic dresses in soft dusty pink</p>
+          </div>
+        </div>
+        <div class="attire-card">
+          <img class="attire-card__icon" src="assets/icons/groomsmen-attire.svg" alt="Groomsmen attire icon" width="55" height="55">
+          <hr class="attire-card__divider">
+          <h3 class="attire-card__title">Groomsmen</h3>
+          <div class="attire-card__block">
+            <span class="attire-card__label">ATTIRE</span>
+            <p class="attire-card__desc">Long-sleeved white button-down polo paired with gold or brown slacks, finished with a matching vest and bow tie.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="attire-group-title">FOR OUR GUESTS</p>
+      <div class="attire-cards">
+        <div class="attire-card attire-card--wide">
+          <div class="attire-card__header">
+            <span class="attire-card__accent-bar attire-card__accent-bar--rose"></span>
+            <h3 class="attire-card__title">Ladies</h3>
+          </div>
+          <ul class="attire-card__list">
+            <li>Cocktail dress</li>
+            <li>Midi or maxi dress</li>
+            <li>Dressy jumpsuit or coordinated set</li>
+          </ul>
+          <p class="attire-card__note">Formal or semi-formal attire in harmony with our wedding palette.</p>
+        </div>
+        <div class="attire-card attire-card--wide">
+          <div class="attire-card__header">
+            <span class="attire-card__accent-bar attire-card__accent-bar--gold"></span>
+            <h3 class="attire-card__title">Gentlemen</h3>
+          </div>
+          <ul class="attire-card__list">
+            <li>Dress pants</li>
+            <li>Collared button-down or polo shirt</li>
+          </ul>
+          <p class="attire-card__note">Formal or semi-formal attire in harmony with our wedding palette.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         WARNING / KINDLY NOTE
+         ==================================================================== -->
+    <section class="warning-section" aria-label="Attire reminder">
+      <img class="warning-section__icon" src="assets/icons/warning.svg" alt="Warning icon" width="55" height="55">
+      <div class="warning-section__text">
+        <p class="warning-section__title">KINDLY NOTE</p>
+        <p class="warning-section__body">
+          <span>To keep the spotlight on the couple, please avoid</span><span> wearing white, cream, or ivory.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         GIFT
+         ==================================================================== -->
+    <section class="gift-section" id="gifts" aria-label="Gift information">
+      <div class="gift-wrap">
+        <div class="gift-content">
+          <img class="gift-content__icon" src="assets/icons/gift.svg" alt="Gift icon" width="55" height="55">
+          <p class="gift-content__eyebrow">A Kind Note</p>
+          <h2 class="gift-content__title" style="text-align:left;">Your Presence is Our Gift</h2>
+          <hr class="gift-content__rule">
+          <div class="gift-content__body">
+            <p>Your presence is already the greatest gift we could ask for. However, if you wish to bless us with something more, a monetary gift would be greatly appreciated as we prepare for our future together.</p>
+            <p>We kindly ask for this instead of physical gifts as we may be relocating in the future.</p>
+          </div>
+          <hr class="gift-content__rule gift-content__rule--wide">
+          <p class="gift-content__rsvp-label">HAVEN'T RSVPED YET?</p>
+          <a class="btn btn--wide btn--secondary-bg" href="https://docs.google.com/forms/d/e/1FAIpQLSfGIxiJ_s2vLRbx0BT3lXO6SVjTKDHWk9LJu4ngociZpSLSjw/viewform" target="_blank" rel="noopener">CONFIRM ATTENDANCE</a>
+        </div>
+        <div class="gift-map">
+          <img class="gift-map__photo" src="assets/photos/gift-bouquet.jpg" alt="Bouquet and floral arrangement photo">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="footer-columns">
+      <div class="footer-brand">
+        <p class="footer-brand__logo">Benna &amp; Zynold</p>
+        <p class="footer-brand__date">DECEMBER 26, 2026</p>
+      </div>
+      <div class="footer-info">
+        <div class="footer-col">
+          <span class="footer-col__label footer-col__label--ceremony">CEREMONY</span>
+          <p>St. Joseph the Worker Parish Church</p>
+          <p>Maharlika Highway, San Jose City, Nueva Ecija, Philipines</p>
+          <p>3:00 PM</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-col__label footer-col__label--reception">RECEPTION</span>
+          <p>Le Felize Victoria</p>
+          <p>Zone 9, 39 Ben Saturno St, Sibut, San Jose City, 3121 Nueva Ecija, Philippines</p>
+          <p>4:00 PM</p>
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <p class="footer-bottom">Benna &amp; Zynold 2026</p>
+  </footer>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var navList = document.getElementById('navList');
+    var header = document.querySelector('.site-header');
+
+    toggle.addEventListener('click', function () {
+      var expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      navList.classList.toggle('is-open');
+    });
+
+    navList.querySelectorAll('.nav__link').forEach(function (link) {
+      link.addEventListener('click', function () {
+        if (window.matchMedia('(max-width: 1024px)').matches) {
+          toggle.setAttribute('aria-expanded', 'false');
+          navList.classList.remove('is-open');
+        }
+      });
+    });
+
+    function updateHeaderOnScroll() {
+      if (window.scrollY > 20) {
+        header.classList.add('site-header--scrolled');
+      } else {
+        header.classList.remove('site-header--scrolled');
+      }
+    }
+    updateHeaderOnScroll();
+    window.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
+
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      var canvas = document.getElementById('cursorTrailCanvas');
+      var ctx = canvas && canvas.getContext ? canvas.getContext('2d') : null;
+
+      if (ctx) {
+        var DPR = Math.min(window.devicePixelRatio || 1, 2); // capped to avoid lag on high-DPI screens
+
+        function resizeCanvas() {
+          canvas.width = window.innerWidth * DPR;
+          canvas.height = window.innerHeight * DPR;
+          canvas.style.width = window.innerWidth + 'px';
+          canvas.style.height = window.innerHeight + 'px';
+          ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas, { passive: true });
+
+        var TRAIL_LENGTH = 10;
+        var EASE = 0.35;
+        var BASE_CORE = 25;           // visible "brush" size (20-30px range requested)
+        var EXTEND_MULTIPLIER = 3.5;  // gradient radius extends 3-4x past the core
+        var CENTER_ALPHA = 0.15;      // low starting opacity, per the requested example
+        var points = [];
+        for (var i = 0; i < TRAIL_LENGTH; i++) points.push({ x: -9999, y: -9999 });
+
+        var mouseX = -9999;
+        var mouseY = -9999;
+        var isActive = false;
+        var activeStrength = 0; // eased 0-1, drives smooth fade in/out
+
+        document.addEventListener('mousemove', function (e) {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          isActive = true;
+        }, { passive: true });
+
+        document.addEventListener('mouseleave', function () {
+          isActive = false;
+        });
+
+        function drawTrail() {
+          activeStrength += ((isActive ? 1 : 0) - activeStrength) * 0.08;
+          ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+          if (activeStrength > 0.003) {
+            var targetX = mouseX;
+            var targetY = mouseY;
+            for (var i = 0; i < TRAIL_LENGTH; i++) {
+              points[i].x += (targetX - points[i].x) * EASE;
+              points[i].y += (targetY - points[i].y) * EASE;
+              var t = i / (TRAIL_LENGTH - 1);
+              var coreRadius = BASE_CORE * (1 - t * 0.8);
+              var radius = coreRadius * EXTEND_MULTIPLIER;
+              var fade = (1 - t) * activeStrength;
+              if (radius > 0.5 && fade > 0.003) {
+                var coreStop = 1 / EXTEND_MULTIPLIER; // where the small "brush" core ends
+                var grad = ctx.createRadialGradient(
+                  points[i].x, points[i].y, 0,
+                  points[i].x, points[i].y, radius
+                );
+                grad.addColorStop(0, 'rgba(199, 164, 158, ' + (CENTER_ALPHA * fade) + ')');
+                grad.addColorStop(coreStop, 'rgba(199, 164, 158, ' + (CENTER_ALPHA * 0.6 * fade) + ')');
+                grad.addColorStop(coreStop + (1 - coreStop) * 0.5, 'rgba(199, 164, 158, ' + (CENTER_ALPHA * 0.18 * fade) + ')');
+                grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(points[i].x, points[i].y, radius, 0, Math.PI * 2);
+                ctx.fill();
+              }
+              targetX = points[i].x;
+              targetY = points[i].y;
+            }
+          }
+          requestAnimationFrame(drawTrail);
+        }
+        requestAnimationFrame(drawTrail);
+      }
+    }
+  })();
+</script>
+</body>
+</html>
